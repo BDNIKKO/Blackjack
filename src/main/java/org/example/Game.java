@@ -7,6 +7,7 @@ public class Game {
     private final Player player;
     private final Player dealer;
     private int playerBalance;
+    private int currentBet;
     private static final int DEFAULT_BET = 10;
 
     public Game() {
@@ -31,6 +32,13 @@ public class Game {
             System.out.println("==================================");
             System.out.println("Starting a new round...");
             System.out.println("==================================");
+            System.out.println("Enter your bet (increments of 5): ");
+            currentBet = scanner.nextInt();
+            while (currentBet % 5 != 0 || currentBet > playerBalance) {
+                System.out.println("Invalid bet amount. Please enter a bet in increments of 5 and not more than your balance:");
+                currentBet = scanner.nextInt();
+            }
+
             deck.shuffle();
             player.clearHand();
             dealer.clearHand();
@@ -47,7 +55,7 @@ public class Game {
             // Check for Blackjack
             if (player.getHandValue() == 21 && player.getHand().size() == 2) {
                 System.out.println("Blackjack! You win!");
-                playerBalance += DEFAULT_BET * 1.5; // Blackjack pays 1.5 times the bet
+                playerBalance += currentBet * 1.5; // Blackjack pays 1.5 times the bet
                 System.out.println("Your balance: $" + playerBalance);
                 System.out.println("==================================");
                 System.out.println("Do you want to play another round? (y/n)");
@@ -60,28 +68,39 @@ public class Game {
                 System.out.println("Do you want to split your hand? (y/n)");
                 if (scanner.next().equalsIgnoreCase("y")) {
                     // Handle split logic here
-                    // For simplicity, I did not implement split logic fully here
+                    // For simplicity, we will not implement the split logic fully here
                     System.out.println("Splitting is not yet implemented.");
                 }
             }
 
             // Player's turn
             boolean playerTurn = true;
+            boolean doubleDown = false;
             while (playerTurn) {
-                System.out.println("Choose an action: (1) Hit, (2) Stand");
+                System.out.println("Choose an action: (1) Hit, (2) Stand, (3) Double Down");
                 int choice = scanner.nextInt();
                 if (choice == 1) {
                     player.addCard(deck.dealCard());
                     System.out.println("Your hand: " + player.getHand());
                     if (player.getHandValue() > 21) {
                         System.out.println("You bust!");
-                        playerBalance -= DEFAULT_BET;
+                        playerBalance -= currentBet;
                         playerTurn = false;
                         break;
                     } else if (player.getHandValue() == 21) {
                         System.out.println("You have 21!");
                         playerTurn = false;
                     }
+                } else if (choice == 3 && !doubleDown) {
+                    doubleDown = true;
+                    currentBet *= 2;
+                    player.addCard(deck.dealCard());
+                    System.out.println("Your hand: " + player.getHand());
+                    if (player.getHandValue() > 21) {
+                        System.out.println("You bust!");
+                        playerBalance -= currentBet;
+                    }
+                    playerTurn = false;
                 } else {
                     playerTurn = false;
                 }
@@ -116,16 +135,16 @@ public class Game {
 
         if (playerValue > 21) {
             System.out.println("You lose!");
-            playerBalance -= DEFAULT_BET;
+            playerBalance -= currentBet;
         } else if (dealerValue > 21 || playerValue > dealerValue) {
             System.out.println("You win!");
-            playerBalance += DEFAULT_BET;
+            playerBalance += currentBet;
         } else if (playerValue == dealerValue) {
             System.out.println("It's a tie!");
             // In a tie, the player's balance remains unchanged
         } else {
             System.out.println("You lose!");
-            playerBalance -= DEFAULT_BET;
+            playerBalance -= currentBet;
         }
     }
 }

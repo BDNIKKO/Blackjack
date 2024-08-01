@@ -21,27 +21,23 @@ This is a console-based Blackjack game implemented in Java. The game allows a pl
 5. **Calculate the player's new balance**: Implemented in the `Game` class, balance updates after each round.
 
 ### Level 2
-1. **Betting in increments of 5**: Implemented with a default bet of $10.
-2. **Double down**: This functionality is not yet implemented.
+1. **Betting in increments of 5**: Implemented with a default bet of $10 and allowing dynamic betting in increments of 5.
+2. **Double down**: Implemented the functionality for doubling down.
 
 ### Level 3
-1. **Split cards**: Split functionality is acknowledged but not fully implemented.
+1. **Split cards**: Implemented the functionality for splitting cards.
 
 ## Extra Functionality
 1. **Improved Console Readability**: Enhanced the console output with separators and formatted messages for better readability.
 2. **Dynamic Handling of Ace Values**: Aces are counted as 1 or 11 dynamically to prevent busts.
 3. **Welcome Message and Starting Balance Display**: Added a welcome message and displayed the player's starting balance at the start of the game.
+4. **Dynamic Betting**: Allowed players to choose their bet amount at the beginning of each round.
 
 ## How to Play
 1. Run the `Main` class to start the game.
 2. Follow the prompts in the console to play rounds of Blackjack.
 3. After each round, the game will display the results and update your balance.
 4. You can choose to play another round or exit the game.
-
-## Future Enhancements
-1. **Double Down**: Implement the functionality for doubling down.
-2. **Split Cards**: Complete the implementation for splitting cards.
-3. **Enhanced Betting System**: Allow variable betting amounts in increments of 5.
 
 ## Running the Game
 1. Clone the repository.
