@@ -67,8 +67,7 @@ public class Game {
             if (player.getHand().get(0).getValue() == player.getHand().get(1).getValue()) {
                 System.out.println("Do you want to split your hand? (y/n)");
                 if (scanner.next().equalsIgnoreCase("y")) {
-                    // Handle split logic here
-                    // For simplicity, we will not implement the split logic fully here
+                    // For simplicity, I will not implement the split logic fully here
                     System.out.println("Splitting is not yet implemented.");
                 }
             }
