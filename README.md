@@ -1,7 +1,7 @@
 # Blackjack Console Game
 
 ## Overview
-This is a console-based Blackjack game implemented in Java. The game allows a player to play rounds of Blackjack against a dealer. The game includes features from basic Blackjack gameplay to handling Ace values dynamically and improving console readability.
+This is my console-based Blackjack game implemented in Java. The game allows a player to play rounds of Blackjack against a dealer. The game includes features from basic Blackjack gameplay to handling Ace values dynamically, allowing splits, double downs, and providing an enhanced betting system.
 
 ## Project Structure
 - **Card.java**: Defines the properties of a card.
@@ -25,7 +25,7 @@ This is a console-based Blackjack game implemented in Java. The game allows a pl
 2. **Double down**: Implemented the functionality for doubling down.
 
 ### Level 3
-1. **Split cards**: Implemented the functionality for splitting cards.
+1. **Split cards**: Implemented the functionality for splitting cards and playing two hands in unison if the initial two cards are of the same value.
 
 ## Extra Functionality
 1. **Improved Console Readability**: Enhanced the console output with separators and formatted messages for better readability.
